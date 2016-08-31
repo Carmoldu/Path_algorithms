@@ -110,9 +110,46 @@ while true
     % Visit all of the neighbors around the current node and update the
     % entries in the map, f, g and parent arrays
     %
+
     
     
+    if i+1<=size(map,1)
+        if  g(i+1,j)>(g(current)+1) && (map(i+1,j)==1 || map(i+1,j)==6)
+            g(i+1,j)=g(current)+1;
+            f(i+1,j)=g(i+1,j)+H(i+1,j);          
+            parent(i+1,j)=current;
+            map(i+1,j)=4;
+        end
+    end
     
+    if i-1>=1
+        if  g(i-1,j)>(g(current)+1) && (map(i-1,j)==1 || map(i-1,j)==6)
+            g(i-1,j)=g(current)+1;
+            f(i-1,j)=g(i-1,j)+H(i-1,j);   
+            parent(i-1,j)=current;
+            map(i-1,j)=4;
+        end
+    end
+    
+    if j+1<=size(map,2)
+        if g(i,j+1)>(g(current)+1) && (map(i,j+1)==1 || map(i,j+1)==6)
+            g(i,j+1)=g(current)+1;
+            f(i,j+1)=g(i,j+1)+H(i,j+1);   
+            parent(i,j+1)=current;
+            map(i,j+1)=4;
+        end
+    end
+    
+    if j-1>=1
+        if  g(i,j-1)>(g(current)+1) && (map(i,j-1)==1 || map(i,j-1)==6)
+            g(i,j-1)=g(current)+1;
+            f(i,j-1)=g(i,j-1)+H(i,j-1);
+            parent(i,j-1)=current;
+            map(i,j-1)=4;
+        end
+    end
+    
+    numExpanded=numExpanded+1;
     
     
     %*********************************************************************
